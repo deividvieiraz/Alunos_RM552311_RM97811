@@ -37,24 +37,29 @@ Aplicativo Android que permite cadastrar e exibir eventos extremos em diferentes
 
 ## 📷 Demonstração
 
-- Tela principal preenchida:
-  ![Tela principal](prints/tela_principal.jpeg)
+<h3>Tela principal:</h3>
+<p align="center">
+  <img src="prints/tela_principal.jpeg" alt="Tela principal" width="300"/>
+</p>
 
-- Preenchendo dados:
-  ![Preenchendo Dados](prints/preenchendo_dados.jpeg)
+<h3>Preenchendo dados:</h3>
+<p align="center">
+  <img src="prints/preenchendo_dados.jpeg" alt="Preenchendo Dados" width="300"/>
+</p>
 
-- Preenchendo data:
-  ![Preenchendo Data](prints/preenchendo_data.jpeg)
+<h3>Preenchendo data:</h3>
+<p align="center">
+  <img src="prints/preenchendo_data.jpeg" alt="Preenchendo Data" width="300"/>
+</p>
 
-- Dados Preenchidos:
-  ![Dados Preenchidos](prints/dados_preenchidos.jpeg)
-
-- Tela de identificação dos participantes:
-  ![Tela de identificação](prints/participantes.jpeg)
+<h3>Dados Preenchidos:</h3>
+<p align="center">
+  <img src="prints/dados_preenchidos.jpeg" alt="Dados Preenchidos" width="300"/>
+</p>
 
 <h3>Tela de identificação dos participantes:</h3>
 <p align="center">
-  <img src="prints/participantes.jpeg" alt="Tela de identificação" width="400"/>
+  <img src="prints/participantes.jpeg" alt="Tela de identificação" width="300"/>
 </p>
 
 ---
