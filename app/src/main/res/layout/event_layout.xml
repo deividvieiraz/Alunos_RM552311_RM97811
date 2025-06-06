@@ -1,28 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="40dp"
-    android:gravity="center_vertical">
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="12dp"
+    android:background="?android:attr/selectableItemBackground"
+    android:divider="?android:attr/dividerHorizontal"
+    android:showDividers="middle">
 
     <TextView
-        android:id="@+id/textViewItem"
-        android:layout_width="wrap_content"
+        android:id="@+id/viewLocation"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_weight="1"
-        android:textSize="18sp"
+        android:text="Local: São Paulo"
+        android:textSize="16sp"
         android:textStyle="bold"
-        android:textColor="@color/black"
-        tools:text="Novo Evento" />
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/viewType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tipo: Enchente"
+        android:textSize="14sp"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/viewImpact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Impacto: Alto"
+        android:textSize="14sp"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/viewDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Data: 05/06/2025"
+        android:textSize="14sp"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/viewAffected"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pessoas afetadas: 200"
+        android:textSize="14sp"
+        android:textColor="@color/black" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/imageButtonDelete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="end"
         android:background="@android:color/transparent"
         android:src="@drawable/base_line_delete_24"
-        android:layout_marginEnd="16dp" />
+        android:contentDescription="Remover item"
+        android:padding="4dp"
+        android:layout_marginTop="8dp" />
 
 </LinearLayout>

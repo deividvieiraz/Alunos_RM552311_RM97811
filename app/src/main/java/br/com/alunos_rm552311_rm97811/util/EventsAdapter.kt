@@ -15,11 +15,19 @@ class EventsAdapter(private val onEventRemoved: (EventModel) -> Unit) : Recycler
 
     inner class EventViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        val textView = view.findViewById<TextView>(R.id.textViewItem)
-        val button = view.findViewById<ImageButton>(R.id.imageButton)
+        val eventLocation = view.findViewById<TextView>(R.id.viewLocation)
+        val eventType = view.findViewById<TextView>(R.id.viewType)
+        val eventImpact = view.findViewById<TextView>(R.id.viewImpact)
+        val eventDate = view.findViewById<TextView>(R.id.viewDate)
+        val eventAffected = view.findViewById<TextView>(R.id.viewAffected)
+        val button = view.findViewById<ImageButton>(R.id.imageButtonDelete)
 
         fun bind(event: EventModel) {
-            textView.text = event.name
+            eventLocation.text = event.location
+            eventType.text = event.type
+            eventImpact.text = event.impactLevel
+            eventDate.text = event.date
+            eventAffected.text = event.affectedPeopleNumber.toString()
 
             button.setOnClickListener {
                 onEventRemoved(event)

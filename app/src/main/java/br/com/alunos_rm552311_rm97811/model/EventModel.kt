@@ -7,5 +7,9 @@ import androidx.room.PrimaryKey
 data class EventModel(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
-    val name: String
+    val location: String,
+    val type: String,
+    val impactLevel: String,
+    val date: String,
+    val affectedPeopleNumber: Int
 )

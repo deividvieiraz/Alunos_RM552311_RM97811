@@ -27,10 +27,9 @@ class EventsViewModel(application: Application) : AndroidViewModel(application) 
         eventsLiveData = eventDao.getAll()
     }
 
-    fun addEvent(event: String) {
+    fun addEvent(event: EventModel) {
         viewModelScope.launch(Dispatchers.IO) {
-            val newEvent = EventModel(name = event)
-            eventDao.insert(newEvent)
+            eventDao.insert(event)
         }
     }
 

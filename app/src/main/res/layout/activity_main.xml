@@ -18,13 +18,51 @@
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/eventLocation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:hint="Nome do produto"
+        android:hint="Local do evento"
         android:inputType="text"/>
+
+    <EditText
+        android:id="@+id/eventType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Tipo de evento"
+        android:inputType="text"/>
+
+    <EditText
+        android:id="@+id/eventImpactLevel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Impacto do evento"
+        android:inputType="text"/>
+
+    <EditText
+        android:id="@+id/eventDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Data do evento"
+        android:focusable="false"
+        android:clickable="true"
+        android:inputType="none" />
+
+    <EditText
+        android:id="@+id/eventAffectedPeopleNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Número de pessoas afetadas"
+        android:inputType="number"/>
 
     <Button
         android:id="@+id/button"
@@ -32,7 +70,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:text="inserir" />
+        android:text="Incluir" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
