@@ -1,5 +1,6 @@
 package br.com.alunos_rm552311_rm97811
 
+import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.content.Context
 import android.os.Bundle
@@ -84,6 +85,18 @@ class MainActivity : AppCompatActivity() {
             viewModel.addEvent(event)
             clearFields()
             hideKeyboard(currentFocus ?: View(this), this)
+        }
+
+        val buttonPop = findViewById<Button>(R.id.btnShowPopup)
+
+        buttonPop.setOnClickListener {
+            AlertDialog.Builder(this)
+                .setTitle("Participantes")
+                .setMessage("Deivid Vieira - RM552311\nEduardo Paludetto - RM97811")
+                .setPositiveButton("OK") { dialog, _ ->
+                    dialog.dismiss()
+                }
+                .show()
         }
 
         val viewModelFactory = EventsViewModelFactory(application)
