@@ -52,6 +52,11 @@ Aplicativo Android que permite cadastrar e exibir eventos extremos em diferentes
 - Tela de identificação dos participantes:
   ![Tela de identificação](prints/participantes.jpeg)
 
+<h3>Tela de identificação dos participantes:</h3>
+<p align="center">
+  <img src="prints/participantes.jpeg" alt="Tela de identificação" width="400"/>
+</p>
+
 ---
 
 ## 💡 Funcionalidades extras (Bônus)
