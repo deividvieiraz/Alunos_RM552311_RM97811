@@ -1,7 +1,10 @@
 package br.com.alunos_rm552311_rm97811
 
 import android.app.DatePickerDialog
+import android.content.Context
 import android.os.Bundle
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
@@ -9,9 +12,9 @@ import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import br.com.alunos_rm552311_rm97811.model.EventModel
-import br.com.alunos_rm552311_rm97811.viewmodel.EventsViewModelFactory
 import br.com.alunos_rm552311_rm97811.util.EventsAdapter
 import br.com.alunos_rm552311_rm97811.viewmodel.EventsViewModel
+import br.com.alunos_rm552311_rm97811.viewmodel.EventsViewModelFactory
 import java.util.Calendar
 
 class MainActivity : AppCompatActivity() {
@@ -62,13 +65,11 @@ class MainActivity : AppCompatActivity() {
 
         button.setOnClickListener {
 
-            if (isAnyFieldEmpty()) {
-                eventLocation.error = "Preencha um valor"
+            if (isAnyFieldEmpty(eventLocation, eventType, eventImpactLevel, eventDate, eventAffectedPeopleNumber))
                 return@setOnClickListener
-            }
 
             if (Integer.valueOf(eventAffectedPeopleNumber.text.toString()) <= 0) {
-                eventAffectedPeopleNumber.error = "O Número deve ser maior que 0"
+                eventAffectedPeopleNumber.error = "Informe valor maior que zero"
                 return@setOnClickListener
             }
 
@@ -82,6 +83,7 @@ class MainActivity : AppCompatActivity() {
 
             viewModel.addEvent(event)
             clearFields()
+            hideKeyboard(currentFocus ?: View(this), this)
         }
 
         val viewModelFactory = EventsViewModelFactory(application)
@@ -92,13 +94,25 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun isAnyFieldEmpty(): Boolean {
-        return eventLocation.text.isEmpty() || eventType.text.isEmpty() ||
-                eventImpactLevel.text.isEmpty() || eventDate.text.isEmpty() ||
-                eventAffectedPeopleNumber.text.isEmpty()
+    private fun isAnyFieldEmpty(vararg fields: EditText): Boolean {
+        var isAnyFieldEmpty = false
+        for (field in fields) {
+            if (field.text.isEmpty()) {
+                field.error = "Preencha um valor"
+                isAnyFieldEmpty = true
+            } else {
+                field.error = null
+            }
+        }
+        return isAnyFieldEmpty
     }
 
-    fun clearFields() {
+    fun hideKeyboard(view: View, context: Context) {
+        val inputMethodManager = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+    }
+
+    private fun clearFields() {
         eventLocation.text.clear()
         eventType.text.clear()
         eventImpactLevel.text.clear()

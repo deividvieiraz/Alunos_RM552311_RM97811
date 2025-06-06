@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:fitsSystemWindows="true"
     android:background="@android:color/white"
     tools:context="br.com.alunos_rm552311_rm97811.MainActivity">
 
@@ -14,12 +15,9 @@
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
         android:elevation="4dp"
-        android:title="Cadastro de Eventos"
-        android:titleTextColor="@android:color/white"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:titleTextColor="@android:color/black"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
-    <!-- Campos de entrada -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -87,11 +85,11 @@
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="➕ Incluir Evento"
+            android:text="Incluir Evento"
             android:textSize="16sp"
             android:textStyle="bold"
             android:textColor="@android:color/white"
-            android:backgroundTint="@color/purple_500"
+            android:backgroundTint="@color/teal_700"
             android:padding="12dp"
             android:layout_marginBottom="16dp" />
     </LinearLayout>
