@@ -7,13 +7,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
-import br.com.alunos_rm552311_rm97811.viewmodel.ItemsViewModelFactory
-import br.com.alunos_rm552311_rm97811.util.ItemsAdapter
-import br.com.alunos_rm552311_rm97811.viewmodel.ItemsViewModel
+import br.com.alunos_rm552311_rm97811.viewmodel.EventsViewModelFactory
+import br.com.alunos_rm552311_rm97811.util.EventsAdapter
+import br.com.alunos_rm552311_rm97811.viewmodel.EventsViewModel
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var viewModel: ItemsViewModel
+    private lateinit var viewModel: EventsViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -22,13 +22,13 @@ class MainActivity : AppCompatActivity() {
 
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
-        supportActionBar?.title = "Lista de Compras"
+        supportActionBar?.title = "Lista de Eventos"
 
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
-        val itemsAdapter = ItemsAdapter { item ->
-            viewModel.removeItem(item)
+        val eventsAdapter = EventsAdapter { event ->
+            viewModel.removeEvent(event)
         }
-        recyclerView.adapter = itemsAdapter
+        recyclerView.adapter = eventsAdapter
 
         val button = findViewById<Button>(R.id.button)
         val editText = findViewById<EditText>(R.id.editText)
@@ -39,15 +39,15 @@ class MainActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            viewModel.addItem(editText.text.toString())
+            viewModel.addEvent(editText.text.toString())
             editText.text.clear()
         }
 
-        val viewModelFactory = ItemsViewModelFactory(application)
-        viewModel = ViewModelProvider(this, viewModelFactory).get(ItemsViewModel::class.java)
+        val viewModelFactory = EventsViewModelFactory(application)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(EventsViewModel::class.java)
 
-        viewModel.itemsLiveData.observe(this) { items ->
-            itemsAdapter.updateItems(items)
+        viewModel.eventsLiveData.observe(this) { events ->
+            eventsAdapter.updateEvents(events)
         }
     }
 

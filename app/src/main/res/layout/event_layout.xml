@@ -15,7 +15,7 @@
         android:textSize="18sp"
         android:textStyle="bold"
         android:textColor="@color/black"
-        tools:text="Novo Item" />
+        tools:text="Novo Evento" />
 
     <ImageButton
         android:id="@+id/imageButton"
