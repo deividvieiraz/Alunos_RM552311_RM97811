@@ -1,46 +1,54 @@
 package br.com.alunos_rm552311_rm97811
 
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import br.com.alunos_rm552311_rm97811.ui.theme.Alunos_RM552311_RM97811Theme
+import android.widget.Button
+import android.widget.EditText
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.RecyclerView
+import br.com.alunos_rm552311_rm97811.viewmodel.ItemsViewModelFactory
+import br.com.alunos_rm552311_rm97811.util.ItemsAdapter
+import br.com.alunos_rm552311_rm97811.viewmodel.ItemsViewModel
 
-class MainActivity : ComponentActivity() {
+class MainActivity : AppCompatActivity() {
+
+    private lateinit var viewModel: ItemsViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
-        setContent {
-            Alunos_RM552311_RM97811Theme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Greeting("Android")
-                }
+        setContentView(R.layout.activity_main)
+
+        val toolbar: Toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
+        supportActionBar?.title = "Lista de Compras"
+
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+        val itemsAdapter = ItemsAdapter { item ->
+            viewModel.removeItem(item)
+        }
+        recyclerView.adapter = itemsAdapter
+
+        val button = findViewById<Button>(R.id.button)
+        val editText = findViewById<EditText>(R.id.editText)
+
+        button.setOnClickListener {
+            if (editText.text.isEmpty()) {
+                editText.error = "Preencha um valor"
+                return@setOnClickListener
             }
+
+            viewModel.addItem(editText.text.toString())
+            editText.text.clear()
+        }
+
+        val viewModelFactory = ItemsViewModelFactory(application)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(ItemsViewModel::class.java)
+
+        viewModel.itemsLiveData.observe(this) { items ->
+            itemsAdapter.updateItems(items)
         }
     }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    Alunos_RM552311_RM97811Theme {
-        Greeting("Android")
-    }
 }
