@@ -3,61 +3,66 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="12dp"
-    android:background="?android:attr/selectableItemBackground"
-    android:divider="?android:attr/dividerHorizontal"
-    android:showDividers="middle">
+    android:padding="16dp"
+    android:background="@drawable/card_background"
+    android:elevation="4dp"
+    android:layout_margin="8dp"
+    android:clipToPadding="false">
 
     <TextView
         android:id="@+id/viewLocation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Local: São Paulo"
-        android:textSize="16sp"
+        android:text="📍 Local: São Paulo"
+        android:textSize="18sp"
         android:textStyle="bold"
-        android:textColor="@color/black" />
+        android:textColor="@color/black"
+        android:paddingBottom="4dp" />
 
     <TextView
         android:id="@+id/viewType"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Tipo: Enchente"
-        android:textSize="14sp"
-        android:textColor="@color/black" />
+        android:text="🌊 Tipo: Enchente"
+        android:textSize="16sp"
+        android:textColor="@color/dark_gray"
+        android:paddingBottom="2dp" />
 
     <TextView
         android:id="@+id/viewImpact"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Impacto: Alto"
-        android:textSize="14sp"
-        android:textColor="@color/black" />
+        android:text="⚠️ Impacto: Alto"
+        android:textSize="16sp"
+        android:textColor="@color/dark_gray"
+        android:paddingBottom="2dp" />
 
     <TextView
         android:id="@+id/viewDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Data: 05/06/2025"
-        android:textSize="14sp"
-        android:textColor="@color/black" />
+        android:text="📅 Data: 05/06/2025"
+        android:textSize="16sp"
+        android:textColor="@color/dark_gray"
+        android:paddingBottom="2dp" />
 
     <TextView
         android:id="@+id/viewAffected"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Pessoas afetadas: 200"
-        android:textSize="14sp"
-        android:textColor="@color/black" />
+        android:text="👥 Pessoas afetadas: 200"
+        android:textSize="16sp"
+        android:textColor="@color/dark_gray" />
 
     <ImageButton
         android:id="@+id/imageButtonDelete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
         android:layout_gravity="end"
-        android:background="@android:color/transparent"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/circle_red_background"
         android:src="@drawable/base_line_delete_24"
         android:contentDescription="Remover item"
-        android:padding="4dp"
-        android:layout_marginTop="8dp" />
+        android:tint="@android:color/white" />
 
 </LinearLayout>

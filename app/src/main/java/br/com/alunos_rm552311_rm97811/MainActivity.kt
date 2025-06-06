@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
 
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
-        supportActionBar?.title = "Lista de Eventos"
+        supportActionBar?.title = "Painel de Eventos Severos"
 
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         val eventsAdapter = EventsAdapter { event ->
@@ -46,7 +46,6 @@ class MainActivity : AppCompatActivity() {
         eventDate = findViewById(R.id.eventDate)
         eventAffectedPeopleNumber = findViewById(R.id.eventAffectedPeopleNumber)
 
-
         eventDate.setOnClickListener {
             val calendar = Calendar.getInstance()
             val year = calendar.get(Calendar.YEAR)
@@ -54,7 +53,6 @@ class MainActivity : AppCompatActivity() {
             val day = calendar.get(Calendar.DAY_OF_MONTH)
 
             val datePicker = DatePickerDialog(this, { _, selectedYear, selectedMonth, selectedDay ->
-                // Formata a data e coloca no EditText
                 val selectedDate = String.format("%02d/%02d/%04d", selectedDay, selectedMonth + 1, selectedYear)
                 eventDate.setText(selectedDate)
             }, year, month, day)
@@ -66,6 +64,11 @@ class MainActivity : AppCompatActivity() {
 
             if (isAnyFieldEmpty()) {
                 eventLocation.error = "Preencha um valor"
+                return@setOnClickListener
+            }
+
+            if (Integer.valueOf(eventAffectedPeopleNumber.text.toString()) <= 0) {
+                eventAffectedPeopleNumber.error = "O Número deve ser maior que 0"
                 return@setOnClickListener
             }
 
